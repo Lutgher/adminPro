@@ -5,12 +5,18 @@ import { APP_ROUTES } from './app.routes';
 //moduloes
 import { PagesModule } from './pages/pages.module';
 //temporal
-import { FormsModule } from '../../node_modules/@angular/forms';
+import { FormsModule } from '@angular/forms';
+//servicios
+// import { SettingsService } from './services/settings/settings.service';
+import { ServiceModule } from './services/service.module';
+
 //APP_ROUTES
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './login/register.component';
+
 // import { IncrementadorComponent } from './components/incrementador/incrementador.component';
+
 
 
 @NgModule({
@@ -24,7 +30,8 @@ import { RegisterComponent } from './login/register.component';
     BrowserModule, 
     APP_ROUTES,
     PagesModule,
-    FormsModule
+    FormsModule,
+    ServiceModule
   ],
   providers: [],
   bootstrap: [AppComponent]
