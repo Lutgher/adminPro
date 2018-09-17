@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { ModaUploadService } from '../components/moda-upload/moda-upload.service';
 
 import { 
     SettingsService, 
@@ -24,7 +25,8 @@ import {
     SidebarService,
     UsuarioService,
     LoginGuardGuard,
-    SubirArchivoService
+    SubirArchivoService,
+    ModaUploadService
   ],
   declarations: []
 })
