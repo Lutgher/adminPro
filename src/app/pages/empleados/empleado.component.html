@@ -1,0 +1,218 @@
+<div class="card-body">
+        <form #f="ngForm" ngNativeValidate (ngSubmit)="guardarPersona(f)">
+            <div class="form-body">
+                <h3 class="card-title">Datos Personales</h3>
+                <hr>
+                <div class="row p-t-20">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Apellido Paterno</label>
+                            <input [(ngModel)]="persona.pers_apel_pat" name="pers_apel_pat" type="text" class="form-control" placeholder="Apellido Paterno" maxlength="30" required>
+                            <!-- <small class="form-control-feedback"> This is inline help </small>  -->
+                        </div>
+                    </div>
+                    <!--/span-->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Apellido Materno</label>
+                            <input [(ngModel)]="persona.pers_apel_mat" name="pers_apel_mat" type="text" class="form-control" placeholder="Apellido Materno" maxlength="30" required>
+                            <!-- <small class="form-control-feedback"> This field has error. </small>  -->
+                        </div>
+                    </div>
+                    <!--/span-->
+                </div>
+                <div class="row p-t-20">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Nombres</label>
+                            <input [(ngModel)]="persona.pers_nomb" name="pers_nomb" type="text" class="form-control" placeholder="Nombres" maxlength="30" required>
+                            <!-- <small class="form-control-feedback"> This is inline help </small>  -->
+                        </div>
+                    </div>
+                    <!--/span-->
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="control-label">Documento</label>
+                            <select (change)="cambioTipoDoc($event.target.value)" [(ngModel)]="persona.pers_tipoDoc_code" name="pers_tipoDoc_code" class="form-control">
+                                <option [ngValue]="undefined">Seleccione</option>
+                                <option *ngFor="let tipoDoc of tipoDocs" [value]="tipoDoc.codeTipoDoc">
+                                    {{tipoDoc.tipoDoc_desc_cort}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="control-label">Nro Doc</label>
+                            <input [(ngModel)]="persona.pers_nro_doc" name="pers_nro_doc" type="text" class="form-control" placeholder="Numero de Documento" maxlength="11" required>
+                            <!-- <small class="form-control-feedback"> This field has error. </small>  -->
+                        </div>
+                    </div>
+                    <!--/span-->
+                </div>
+                <!--/row-->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group has-success">
+                            <label class="control-label">Genero</label>
+                            <select [(ngModel)]="persona.empl_sexo" name="empl_sexo" class="form-control">
+                                <!-- <option [ngValue]="undefined">Seleccione</option> -->
+                                
+                                <option value="M">MASCULINO</option>
+                                <option value="F">FEMENINO</option>
+                            </select>
+                            <!-- <small class="form-control-feedback"> Seleccione un genero </small>  -->
+                        </div>
+                    </div>
+                    <!--/span-->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Fecha de nacimiento</label>
+                            <input [(ngModel)]="persona.empl_fech_nac" name="empl_fech_nac" type="date" class="form-control" placeholder="dd/mm/yyyy">
+                        </div>
+                    </div>
+                    <!--/span-->
+                </div>
+
+                <h3 class="box-title m-t-40">Cargo Empleado</h3>
+            <div class="row p-t-20">
+                    <!--/span-->
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label">Cargo</label>
+                            <select (change)="cambioCargo($event.target.value)" [(ngModel)]="persona.empl_carg_id" name="empl_carg_id" class="form-control">
+                                <option [ngValue]="undefined">Seleccione</option>
+                                <option *ngFor="let cargo of cargos" [value]="cargo.idCarg">
+                                    {{cargo.carg_desc}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label">Fecha Contrato</label>
+                            <input [(ngModel)]="persona.empl_fech_contr" name="empl_fech_contr" type="date" class="form-control" placeholder="dd/mm/yyyy">
+                            <!-- <small class="form-control-feedback"> This is inline help </small>  -->
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="control-label">Duración</label>
+                            <input [(ngModel)]="persona.empl_tiemp_contr" name="empl_tiemp_contr" type="number" class="form-control" placeholder="Nro de Meses" maxlength="11" min="0">
+                            <!-- <small class="form-control-feedback"> This field has error. </small>  -->
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="control-label">Remuneración</label>
+                            <input [(ngModel)]="persona.empl_salario" name="empl_salario" type="number" class="form-control" placeholder="Salario" maxlength="11" min="0">
+                            <!-- <small class="form-control-feedback"> This field has error. </small>  -->
+                        </div>
+                    </div>
+                    <!--/span-->
+    
+            </div>
+                <!--/row-->
+                <h3 class="box-title m-t-40">Dirección</h3>
+                <hr>
+                <div class="row">
+                    <div class="col-md-6 ">
+                        <div class="form-group">
+                            <label>Dirección</label>
+                            <input [(ngModel)]="persona.dire_desc" name="dire_desc" type="text" class="form-control" placeholder="Dirección" maxlength="100">
+                        </div>
+                    </div>
+                    <div class="col-md-6 ">
+                        <div class="form-group">
+                            <label>Referencia</label>
+                            <input [(ngModel)]="persona.dire_refe" name="dire_refe" type="text" class="form-control" placeholder="Dirección" maxlength="100">
+                        </div>
+                    </div>
+                </div>
+                
+                    <!--/span-->
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">Departamento</label>
+                                <select (change)="cambiarDepto($event.target.value)" [(ngModel)]="persona.departamentoDireccion" name="departamentoDireccion" class="form-control">
+                                    <option [ngValue]="undefined">Seleccione</option>
+                                    <option *ngFor="let depto of deptos" [value]="depto.idDepto">
+                                        {{depto.depto_desc}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">Provincia</label>
+                                <select (change)="cambiarProv($event.target.value)" [(ngModel)]="persona.provinciaDireccion" name="provinciaDireccion" class="form-control">
+                                    <option [ngValue]="undefined">Seleccione</option>
+                                    <option *ngFor="let prov of provs" [value]="prov.idProv">
+                                        {{ prov.prov_desc }}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">Distrito</label>
+                                <select (change)="cambioDistr($event.target.value)" [(ngModel)]="persona.distritoDireccion" name="distritoDireccion" class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
+                                    <option [ngValue]="undefined">Seleccione</option>
+                                    <option *ngFor="let dist of dists" [value]="dist.idDist">
+                                        {{ dist.dist_desc }}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+            
+                        <!--/span-->
+                    </div>
+            </div>
+            <h3 class="box-title m-t-40">Otros Datos</h3>
+            <div class="row p-t-20">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="control-label">Email</label>
+                        <input [(ngModel)]="persona.email_desc" name="email_desc" type="text" class="form-control" placeholder="Correo Electrónico" maxlength="100">
+                        <!-- <small class="form-control-feedback"> This is inline help </small>  -->
+                    </div>
+                </div>
+            </div>  
+            <div class="row p-t-20">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">Operador</label>
+                        <select (change)="cambioOperador($event.target.value)" [(ngModel)]="persona.fono_oper_code" name="fono_oper_code" class="form-control">
+                            <option [ngValue]="undefined">Seleccione</option>
+                            <option *ngFor="let operador of operadores" [value]="operador.codeOper">
+                                {{operador.oper_desc}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">Nro Cel</label>
+                        <input [(ngModel)]="persona.fono_nro" name="fono_nro" type="text" class="form-control" placeholder="Número Teléfono" maxlength="11">
+                        <!-- <small class="form-control-feedback"> This field has error. </small>  -->
+                    </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label">Ref Cel</label>
+                            <input [(ngModel)]="persona.fono_nro_ref" name="fono_nro_ref" type="text" class="form-control" placeholder="Número Celular" maxlength="11">
+                            <!-- <small class="form-control-feedback"> This field has error. </small>  -->
+                        </div>
+                    </div>
+            </div>
+            
+            <div class="form-actions">
+                
+                <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Guardar</button>
+                <a routerLink="/empleado" class="btn btn-inverse">Cancelar</a>
+    
+            </div>
+        </form>
+    </div>

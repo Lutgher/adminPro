@@ -17,13 +17,46 @@ export class SidebarService {
         { titulo: 'rxjs', url: '/rxjs' }
       ]
     },
+    // {
+    //   titulo: 'Mantenimientos',
+    //   icono:'mdi mdi-folder-lock-open',
+    //   submenu:[
+    //     {titulo:'Usuarios', url:'/usuarios'},
+    //     {titulo:'Hospitales', url:'/hospitales'},
+    //     {titulo:'Medicos',url:'/medicos'}
+    //   ]
+    // },
     {
-      titulo: 'Mantenimientos',
-      icono:'mdi mdi-folder-lock-open',
+      titulo: 'Almacén',
+      icono:'ti-truck',
       submenu:[
-        {titulo:'Usuarios', url:'/usuarios'},
-        {titulo:'Hospitales', url:'/hospitales'},
-        {titulo:'Medicos',url:'/medicos'}
+        {titulo:'Categorias',url:'/categorias'},
+        {titulo:'Unidades de Medida',url:'/unidadmedida'},
+        {titulo:'Cátalogo de Productos', url:'/producto'}
+      ]
+    },
+    {
+      titulo: 'Compras',
+      icono:'mdi mdi-shopping',
+      submenu:[
+        {titulo:'Proveedores',url:'/proveedor'},
+        {titulo:'Registro de Compras',url:'/compras'}
+      ]
+    },
+    {
+      titulo: 'Ventas',
+      icono:'icon-basket-loaded',
+      submenu:[
+        {titulo:'Tipo Comprobante',url:'/tipoComprobante'}
+      ]
+    },
+    {
+      titulo: 'Recursos Humanos',
+      icono:'icon-people',
+      submenu:[
+        {titulo:'Cargos',url:'/cargo'},
+        {titulo:'Empleado', url:'/empleado'},
+        {titulo:'Usuarios', url:'/usuarios'}
       ]
     }
   ]

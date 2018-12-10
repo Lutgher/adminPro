@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../../models/usuario.model';
 import { UsuarioService } from '../../services/service.index';
-import { ModaUploadService } from '../../components/moda-upload/moda-upload.service';
 
 declare let swal:any;
 
@@ -17,17 +16,12 @@ export class UsuariosComponent implements OnInit {
   cargando: boolean=true;
 
   constructor(
-    public _usuarioService: UsuarioService,
-    public _modalUploadService: ModaUploadService
+    public _usuarioService: UsuarioService
   ) { }
 
   ngOnInit() {
     this.cargarUsuarios();
-    this._modalUploadService.notificacion.subscribe(resp=>this.cargarUsuarios());
     
-  }
-  mostrarModal(id: string){
-    this._modalUploadService.mostrarModal('usuarios',id);
   }
   cargarUsuarios(){
     this.cargando=true;

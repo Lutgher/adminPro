@@ -23,7 +23,14 @@ import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
-import { ModaUploadComponent } from '../components/moda-upload/moda-upload.component';
+import { CategoriaComponent } from './categoria/categoria.component';
+import { UndmedidaComponent } from './undmedida/undmedida.component';
+import { ProductosComponent } from './productos/productos.component';
+import { CargoComponent } from './cargo/cargo.component';
+import { TipocomprobanteComponent } from './tipocomprobante/tipocomprobante.component';
+import { ProveedoresComponent } from './proveedores/proveedores.component';
+import { ComprasComponent } from './compras/compras.component';
+import { EmpleadosComponent } from './empleados/empleados.component';
 
 
 
@@ -43,7 +50,14 @@ import { ModaUploadComponent } from '../components/moda-upload/moda-upload.compo
         RxjsComponent,
         ProfileComponent,
         UsuariosComponent,
-        ModaUploadComponent
+        CategoriaComponent,
+        UndmedidaComponent,
+        ProductosComponent,
+        CargoComponent,
+        TipocomprobanteComponent,
+        ProveedoresComponent,
+        ComprasComponent,
+        EmpleadosComponent
     ],
     exports:[
         PagesComponent,

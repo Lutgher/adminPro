@@ -1,0 +1,68 @@
+<div class="row animated fadeIn">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+
+        <input #input (keyup)="buscarEmpleado( input.value )" type="text" class="form-control" placeholder="Ingrese Nro Documento o Apellidos y Nombres">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+
+        <div class="text-right">
+          <button [routerLink]="['/empleado','nuevo']" type="button" class="btn waves-effect waves-light btn-rounded btn-primary">
+            <i class="fa fa-plus"></i>
+            Agregar Empleado
+          </button>
+        </div>
+        <h3 class="card-tittle">Empleados Registrados activos</h3>
+
+        <table class="table table-hover">
+
+          <thead>
+            <tr>
+              <th>Apellidos y Nombres</th>
+              <th>Documento</th>
+              <th>Nro Documento</th>
+              <th>Cargo</th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let empleado of empleados">
+              <td>
+                {{ empleado.pers_alias}}
+              </td>
+              <td>
+                {{ empleado.tipoDoc_desc_cort }}
+              </td>
+              <td>
+                {{ empleado.pers_nro_do }}
+              </td>
+              <th>
+                {{ empleado.carg_desc }}
+              </th>
+              <td class="text-right">
+                <button  class="btn btn-primary">
+                  <i class="fa fa-save"></i>
+                </button>
+                <button class="btn btn-danger">
+                  <i class="fa fa-trash-o"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+
+        </table>
+
+      <!-- </div> -->
+    </div>
+  </div>
+</div>

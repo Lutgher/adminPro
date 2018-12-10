@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Usuario } from '../../models/usuario.model';
 import { HttpClient } from '@angular/common/http';
 import { URL_SERVICIOS } from '../../config/config';
-
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 // import { SubirArchivoService } from '../subir-Archivo/subir-archivo.service';
@@ -91,7 +90,7 @@ export class UsuarioService {
       localStorage.removeItem('email');
     }
 
-    let url=`${ URL_SERVICIOS }/login`;
+    let url=`${ URL_SERVICIOS }/api/login`;
     return this.http.post(url, usuario)
       //para almacenar en el localstorage
       .pipe(
@@ -140,7 +139,6 @@ export class UsuarioService {
 
   cargarUsuarios(desde:number=0){
     let url=`${URL_SERVICIOS}/usuario?desde=${desde}`;
-
     return this.http.get(url);
   }
 

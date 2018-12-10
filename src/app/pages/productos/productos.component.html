@@ -1,0 +1,68 @@
+<div class="row animated fadeIn">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+
+        <input #input (keyup)="buscarProducto( input.value )" type="text" class="form-control" placeholder="Buscar producto">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+
+        <div class="text-right">
+          <button [routerLink]="['/producto','nuevo']" type="button" class="btn waves-effect waves-light btn-rounded btn-primary">
+            <i class="fa fa-plus"></i>
+            Crear Producto
+          </button>
+        </div>
+        <h3 class="card-tittle">Productos Registrados</h3>
+
+        <table class="table table-hover">
+
+          <thead>
+            <tr>
+              <th>Categoría</th>
+              <th>Producto</th>
+              <th>Und Medida</th>
+              <th>Stock</th>
+              <th>Prec Mayor</th>
+              <th>Prec Menor</th>
+              <th>Stock Unit</th>
+              <th>Prec Unit</th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let producto of productos">
+              <td>{{ producto.cat_desc }}</td>
+              <td>{{ producto.producto }}</td>
+              <td>{{ producto.undMed_abre }}</td>
+              <td>{{ producto.prod_stock }}</td>
+              <td>{{ producto.prod_prec_may }}</td>
+              <td>{{ producto.prod_prec_min }}</td>
+              <td>{{ producto.prod_stock_und }}</td>
+              <td>{{ producto.prod_prec_und }}</td>
+              <td class="text-right">
+                <button  class="btn btn-primary">
+                  <i class="fa fa-save"></i>
+                </button>
+                <button class="btn btn-danger">
+                  <i class="fa fa-trash-o"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+
+        </table>
+
+      <!-- </div> -->
+    </div>
+  </div>
+</div>

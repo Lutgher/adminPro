@@ -1,0 +1,60 @@
+<div class="row animated fadeIn">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+
+        <input #input (keyup)="buscarProveedor( input.value )" type="text" class="form-control" placeholder="Ingrese RUC/Razón Social"> 
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+
+        <div class="text-right">
+          <button [routerLink]="['/proveedor','nuevo']" type="button" class="btn waves-effect waves-light btn-rounded btn-primary">
+            <i class="fa fa-plus"></i>
+            Agregar Proveedor
+          </button>
+        </div>
+        <h3 class="card-tittle">Proveedores Registrados</h3>
+
+        <table class="table table-hover">
+
+          <thead>
+            <tr>
+              <th>R.U.C.</th>
+              <th>Razón Social</th>
+              <th>Dirección</th>
+              <th>Teléfono</th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let proveedor of proveedores">
+              <td>{{ proveedor.prove_ruc }}</td>
+              <td>{{ proveedor.pers_alias }}</td>
+              <td>{{ proveedor.dire_desc }}</td>
+              <td>{{ proveedor.fono_nro }}</td>
+              <td class="text-right">
+                <button  class="btn btn-primary">
+                  <i class="fa fa-save"></i>
+                </button>
+                <button class="btn btn-danger">
+                  <i class="fa fa-trash-o"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+
+        </table>
+
+      <!-- </div> -->
+    </div>
+  </div>
+</div>

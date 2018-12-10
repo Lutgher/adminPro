@@ -1,0 +1,160 @@
+<div class="card-body">
+  <form #f="ngForm" ngNativeValidate (ngSubmit)="guardarProducto(f)">
+      <div class="form-body">
+          <h3 class="card-title">Productos</h3>
+          <hr>
+          <div class="row p-t-20">
+              <div class="col-md-5">
+                  <div class="form-group">
+                      <label class="control-label">Producto</label>
+                      <input [(ngModel)]="producto.prod_nomb" name="prod_nomb" type="text" class="form-control" placeholder="Nombre de Producto" maxlength="30" required>
+                      <!-- <small class="form-control-feedback"> This is inline help </small>  -->
+                  </div>
+              </div>
+              <!--/span-->
+              <div class="col-md-7">
+                  <div class="form-group">
+                      <label class="control-label">Descripción</label>
+                      <input [(ngModel)]="producto.prod_desc" name="prod_desc" type="text" class="form-control" placeholder="Descripción" maxlength="30" required>
+                      <!-- <small class="form-control-feedback"> This field has error. </small>  -->
+                  </div>
+              </div>
+
+              <!--/span-->
+          </div>
+          <div class="row p-t-20">
+              <!--/span-->
+              <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Presentación (Solo valor númerico)</label>
+                    <input [(ngModel)]="producto.prod_pres" name="prod_pres" type="number" min="0" class="form-control" placeholder="Presentación" maxlength="30">
+                    <!-- <small class="form-control-feedback"> This is inline help </small>  -->
+                </div>
+              </div>
+              <div class="col-md-4">
+                  <div class="form-group">
+                      <label class="control-label">Marca</label>
+                      <input [(ngModel)]="producto.prod_marc" name="prod_marc" type="text" class="form-control" placeholder="Marca" maxlength="11" >
+                      <!-- <small class="form-control-feedback"> This field has error. </small>  -->
+                  </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Contenido</label>
+                    <input [(ngModel)]="producto.prod_cont" name="prod_cont" type="text" class="form-control" placeholder="Contenido" maxlength="11" >
+                    <!-- <small class="form-control-feedback"> This is inline help </small>  -->
+                </div>
+              </div>
+              <!--/span-->
+          </div>
+          <!--/row-->
+          <div class="row">
+              <div class="col-md-5">
+                  <div class="form-group">
+                      <label class="control-label">Código de Barras</label>
+                      <input [(ngModel)]="producto.prod_codi_barr" name="prod_codi_barr" type="text" class="form-control" placeholder="Código de barras" >
+                      <!-- <small class="form-control-feedback"> This field has error. </small>  -->
+                  </div>
+              </div>
+              
+              <!--/span-->
+              <div class="col-md-4">
+                  <div class="form-group">
+                      <label class="control-label">Categoría</label>
+                      <select (change)="cambiarCategoria($event.target.value)" [(ngModel)]="producto.prod_cat_id" name="prod_cat_id" class="form-control">
+                          <!-- <option [ngValue]="undefined">Seleccione</option> -->
+                          <option *ngFor="let categoria of categorias" [value]="categoria.idcat">
+                              {{ categoria.cat_desc }}
+                          </option>
+                      </select>
+                      
+                      
+
+                  </div>
+              </div>
+              <div class="col-md-3">
+                  <div class="form-group">
+                      <label class="control-label">Und de Medida</label>
+                      <select (change)="cambiarUnidadMedida($event.target.value)" [(ngModel)]="producto.prod_undMed_id" name="prod_undMed_id" class="form-control">
+                          <!-- <option [ngValue]="undefined">Seleccione</option> -->
+                          <option *ngFor="let unidad of undidades" [value]="unidad.idUndMed">
+                              {{ unidad.undMed_desc }}
+                          </option>
+                      </select>
+                  </div>
+              </div>
+
+              <!--/span-->
+          </div>
+
+          <div class="row">
+            <!--/span-->
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Stock minímo</label>
+                    <input [(ngModel)]="producto.prod_stock_min" name="prod_stock_min" type="number" class="form-control" 
+                        placeholder="Mínimo" min="0" maxlength="11" step="any">
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Stock medio</label>
+                    <input [(ngModel)]="producto.prod_stock_med" name="prod_stock_med" type="number" class="form-control" 
+                        placeholder="Medio" min="0" maxlength="11" step="any">
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Stock Normal</label>
+                    <input [(ngModel)]="producto.prod_stock_nor" name="prod_stock_nor" type="number" class="form-control" 
+                        placeholder="Normal" min="0" maxlength="11" step="any">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="control-label">Stock Real</label>
+                    <input [(ngModel)]="producto.prod_stock" name="prod_stock" type="number" class="form-control" 
+                        placeholder="Stock" min="0" maxlength="11" step="any">
+                </div>
+            </div>
+            <!--/span-->
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="control-label">Precio Unitario</label>
+                    <input [(ngModel)]="producto.prod_prec_und" name="prod_prec_und" type="number" class="form-control" 
+                        placeholder="Precio Unitario" min="0" maxlength="11" step="any">
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="control-label">Precio Mayor</label>
+                    <input [(ngModel)]="producto.prod_prec_may" name="prod_prec_may" type="number" class="form-control" 
+                        placeholder="Precio x mayor" min="0" maxlength="11" step="any">
+                </div>
+            </div> 
+            <div class="col-md-3">
+              <div class="form-group">
+                  <label class="control-label">Precio x menor</label>
+                  <input [(ngModel)]="producto.prod_prec_min" name="prod_prec_min" type="number" class="form-control" 
+                    placeholder="Precio x menor" maxlength="11" min="0" step="any" required>
+                  <!-- <small class="form-control-feedback"> This field has error. </small>  -->
+              </div>
+          </div>           
+            <!--/span-->
+        </div>
+
+      </div>
+      <div class="form-actions">
+          
+          <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Guardar</button>
+          <a routerLink="/producto" class="btn btn-inverse">Cancelar</a>
+      </div>
+  </form>
+</div>

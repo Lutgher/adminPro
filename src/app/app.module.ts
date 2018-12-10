@@ -14,6 +14,9 @@ import { ServiceModule } from './services/service.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './login/register.component';
+import { ProductoComponent } from './pages/productos/producto.component';
+import { EmpleadoComponent } from './pages/empleados/empleado.component';
+import { ProveedorComponent } from './pages/proveedores/proveedor.component';
 
 
 // import { IncrementadorComponent } from './components/incrementador/incrementador.component';
@@ -24,7 +27,10 @@ import { RegisterComponent } from './login/register.component';
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProductoComponent,
+    EmpleadoComponent,
+    ProveedorComponent
     // IncrementadorComponent
   ],
   imports: [

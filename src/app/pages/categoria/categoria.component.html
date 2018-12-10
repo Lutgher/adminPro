@@ -1,0 +1,64 @@
+<div class="row animated fadeIn">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+
+        <input #input (keyup)="buscaCategoria( input.value )" type="text" class="form-control" placeholder="Buscar categoría">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+
+        <div class="text-right">
+          <button  type="button" class="btn waves-effect waves-light btn-rounded btn-primary">
+            <i class="fa fa-plus"></i>
+            Crear hospital
+          </button>
+        </div>
+        <h3 class="card-tittle">Categorías Registradas</h3>
+
+        <table class="table table-hover">
+
+          <thead>
+            <tr>
+              <th>Categoría</th>
+              <th>Fecha Actividad</th>
+              <th>Usuario</th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let categoria of categorias">
+              <td>
+                {{ categoria.cat_desc}}
+              </td>
+              <td>
+                {{ categoria.cat_fech_act | date: format: shortDate }}
+              </td>
+              <td>
+                {{ categoria.cat_usua }}
+              </td>
+              <td class="text-right">
+                <button  class="btn btn-primary">
+                  <i class="fa fa-save"></i>
+                </button>
+                <button class="btn btn-danger">
+                  <i class="fa fa-trash-o"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+
+        </table>
+
+      <!-- </div> -->
+    </div>
+  </div>
+</div>

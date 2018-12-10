@@ -1,0 +1,64 @@
+<div class="row animated fadeIn">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+
+        <input #input (keyup)="buscarCargo( input.value )" type="text" class="form-control" placeholder="Buscar Cargo">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+
+        <div class="text-right">
+          <button  type="button" class="btn waves-effect waves-light btn-rounded btn-primary">
+            <i class="fa fa-plus"></i>
+            Crear hospital
+          </button>
+        </div>
+        <h3 class="card-tittle">Cargos Registrados</h3>
+
+        <table class="table table-hover">
+
+          <thead>
+            <tr>
+              <th>Descripción</th>
+              <th>Fecha Actividad</th>
+              <th>Usuario</th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let cargo of cargos">
+              <td>
+                {{ cargo.carg_desc }}
+              </td>
+              <td>
+                {{ cargo.carg_fech_act | date: format: shortDate }}
+              </td>
+              <td>
+                {{ cargo.carg_usua }}
+              </td>
+              <td class="text-right">
+                <button  class="btn btn-primary">
+                  <i class="fa fa-save"></i>
+                </button>
+                <button class="btn btn-danger">
+                  <i class="fa fa-trash-o"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+
+        </table>
+
+      <!-- </div> -->
+    </div>
+  </div>
+</div>

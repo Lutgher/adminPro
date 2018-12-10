@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
   ingresar( forma: NgForm){
     if(forma.invalid) return;
 
-    let usuario=new Usuario(null, forma.value.email, forma.value.password);
+    let usuario=new Usuario(null, forma.value.email, forma.value.pass);
 
     this._usuarioServices.login(usuario, forma.value.recuerdame)
       .subscribe(correcot=>this.router.navigate(['/dashboard']));

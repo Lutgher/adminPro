@@ -1,0 +1,109 @@
+<div class="card-body">
+  <form #f="ngForm" ngNativeValidate (ngSubmit)="guardarPersona(f)">
+      <div class="form-body">
+          <h3 class="card-title">Datos Proveedor</h3>
+          <hr>
+          <div class="row p-t-20">
+              <div class="col-md-3">
+                  <div class="form-group">
+                      <label class="control-label">R.U.C.</label>
+                      <input [(ngModel)]="persona.pers_nro_doc" name="pers_nro_doc" type="text" class="form-control" placeholder="Ingrese Nro RUC" maxlength="30" required>
+                      <!-- <small class="form-control-feedback"> This is inline help </small>  -->
+                  </div>
+              </div>
+              <!--/span-->
+              <div class="col-md-9">
+                  <div class="form-group">
+                      <label class="control-label">Razón Social</label>
+                      <input [(ngModel)]="persona.pers_alias" name="pers_alias" type="text" class="form-control" placeholder="Ingrese Razón Social" maxlength="30" required>
+                      <!-- <small class="form-control-feedback"> This field has error. </small>  -->
+                  </div>
+              </div>
+              <!--/span-->
+          </div>
+          <div class="row">
+              <div class="col-md-12 ">
+                  <div class="form-group">
+                      <label>Dirección</label>
+                      <input [(ngModel)]="persona.dire_desc" name="dire_desc" type="text" class="form-control" placeholder="Dirección" maxlength="100" required>
+                  </div>
+              </div>
+          </div>
+          
+              <!--/span-->
+              <div class="row">
+                  <div class="col-md-4">
+                      <div class="form-group">
+                          <label class="control-label">Departamento</label>
+                          <select (change)="cambiarDepto($event.target.value)" [(ngModel)]="persona.departamentoDireccion" name="departamentoDireccion" class="form-control">
+                              <option [ngValue]="undefined">Seleccione</option>
+                              <option *ngFor="let depto of deptos" [value]="depto.idDepto">
+                                  {{depto.depto_desc}}
+                              </option>
+                          </select>
+                      </div>
+                  </div>
+                  <!--/span-->
+                  <div class="col-md-4">
+                      <div class="form-group">
+                          <label class="control-label">Provincia</label>
+                          <select (change)="cambiarProv($event.target.value)" [(ngModel)]="persona.provinciaDireccion" name="provinciaDireccion" class="form-control">
+                              <option [ngValue]="undefined">Seleccione</option>
+                              <option *ngFor="let prov of provs" [value]="prov.idProv">
+                                  {{ prov.prov_desc }}
+                              </option>
+                          </select>
+                      </div>
+                  </div>
+                  <div class="col-md-4">
+                      <div class="form-group">
+                          <label class="control-label">Distrito</label>
+                          <select (change)="cambioDistr($event.target.value)" [(ngModel)]="persona.distritoDireccion" name="dire_dist_id" class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
+                              <option [ngValue]="undefined">Seleccione</option>
+                              <option *ngFor="let dist of dists" [value]="dist.idDist">
+                                  {{ dist.dist_desc }}
+                              </option>
+                          </select>
+                      </div>
+                  </div>
+      
+                  <!--/span-->
+              </div>
+      </div>
+      <div class="row p-t-20">
+          <div class="col-md-4">
+              <div class="form-group">
+                  <label class="control-label">Operador</label>
+                  <select (change)="cambioOperador($event.target.value)" [(ngModel)]="persona.fono_oper_code" name="fono_oper_code" class="form-control">
+                      <option [ngValue]="undefined">Seleccione</option>
+                      <option *ngFor="let operador of operadores" [value]="operador.codeOper">
+                          {{operador.oper_desc}}
+                      </option>
+                  </select>
+              </div>
+          </div>
+          <div class="col-md-4">
+              <div class="form-group">
+                  <label class="control-label">Nro Cel</label>
+                  <input [(ngModel)]="persona.fono_nro" name="fono_nro" type="text" class="form-control" placeholder="Número Teléfono" maxlength="11">
+                  <!-- <small class="form-control-feedback"> This field has error. </small>  -->
+              </div>
+              </div>
+              <div class="col-md-4">
+                  <div class="form-group">
+                      <label class="control-label">Ref Cel</label>
+                      <input [(ngModel)]="persona.fono_nro_ref" name="fono_nro_ref" type="text" class="form-control" placeholder="Número Celular" maxlength="11">
+                      <!-- <small class="form-control-feedback"> This field has error. </small>  -->
+                  </div>
+              </div>
+      </div>
+
+      
+      <div class="form-actions">
+          
+          <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Guardar</button>
+          <a routerLink="/empleado" class="btn btn-inverse">Cancelar</a>
+
+      </div>
+  </form>
+</div>

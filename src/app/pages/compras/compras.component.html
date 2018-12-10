@@ -1,0 +1,102 @@
+<div class="row">
+  <div class="col-12">
+    <div class="row">
+      <div class="col-3">
+        <div class="form-group">
+          <label for="">RUC</label>
+          <input #input (keyup.enter)="buscarRuc( input.value )" type="text" class="form-control" maxlength="11" minlength="11" required placeholder="Nro RUC">
+        </div>
+      </div>
+      <div class="col-9">
+        <div class="form-group">
+          <label for="">Razón Social</label>
+          <input [(ngModel)]="proveedores.pers_alias" name="alisss"type="text" class="form-control" disabled>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-12">
+    <div class="row">
+      <div class="col-4">
+        <div class="form-group">
+          <label for="">Tipo Comprobante</label>
+          <select (change)="cambioCompro($event.target.value)" name="" class="form-control">
+              <option value="">Seleccionar</option>
+              <option *ngFor="let compr of comprobantes">{{ compr.tipoComp_desc}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="form-group">
+          <label for="">Nro Comprobante</label>
+          <input type="text" class="form-control" required>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="form-group">
+          <label for="">Serie Comprobante</label>
+          <input type="text" class="form-control" required>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-12">
+    <div class="row">
+      <div class="col-4">
+        <div class="form-group">
+          <label for="">Unidad Medida</label>
+          <select (change)="cambioUnidad($event.target.value)" name="" class="form-control">
+              <option value="">Seleccionar</option>
+              <option *ngFor="let und of unidades">
+                {{ und.undMed_desc }}
+              </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="">Producto</label>
+          <input type="text" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="">Precio Compra</label>
+          <input type="text" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="">Cantidad</label>
+          <input type="text" class="form-control">
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary float-right">Agregar</button>
+        </div>
+      </div>
+      <div class="col-8">
+        <label for="">Productos</label>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Descripción</th>
+              <th>UndMed</th>
+              <th>Cant.</th>
+              <th>Precio</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+          <thead>
+            <tr>
+              <th colspan="3"></th>
+              <th>Total:</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
